@@ -5,3 +5,25 @@
 <%= @album.description %>
 <%= image_tag @album.cover_image.url %>
 
+<small class="pull-right"><%= link_to "Delete", album_path(@album.id), method: :delete,
+		data: { confirm: "Are you sure?" } %></small>
+<small class="pull-right"><%= link_to "Edit", edit_album_path %></small>
+<small class="pull-right"><%= link_to "Add", upload_path %></small>
+
+<%= link_to "Home", root_path %>
+
+<div class="container">
+	<div class="row">
+		<h2><%= @album.name %></h2>
+
+		<% if @images.exists? %>
+			<% @images.each do |img| %>
+				<p><%= img.image_title %></p>
+				<p><%= img.image_description %></p>
+				<p><%= image_tag img.image.url%></p>	
+			<% end %>
+		<% else %>
+		    <p>There are no images!</p>
+		<% end %>
+	</div>
+</div>

@@ -9,7 +9,7 @@ class AlbumsController < ApplicationController
 
     if @album.save
       flash[:notice] = "Album Created!"
-      #redirect_to root_path
+      redirect_to root_path
     else
       render 'new'
     end
@@ -36,11 +36,12 @@ class AlbumsController < ApplicationController
     @album  = Album.find(params[:id])
     @album.destroy
 
-    #redirect_to root_path
+    redirect_to root_path
   end
 
   def show
     @album = Album.find(params[:id])
+    @images = @album.images
   end
 
   private
