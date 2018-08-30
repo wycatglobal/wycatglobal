@@ -23,7 +23,7 @@ class ImagesController < ApplicationController
 
     if @image.update(image_params)
       flash[:notice] = "Image Updated!"
-      redirect_to images_path
+      redirect_to root_path
     else
       render 'edit'
     end
@@ -33,11 +33,7 @@ class ImagesController < ApplicationController
     @image  = Image.find(params[:id])
     @image.destroy
 
-    redirect_to images_path
-  end
-
-  def index
-    @albums = Album.all
+    redirect_to root_path
   end
 
   private

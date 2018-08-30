@@ -1,0 +1,18 @@
+<h1>Events#show</h1>
+<p>Find me in app/views/events/show.html.erb</p>
+
+<small class="pull-right"><%= link_to "Delete", event_path(@event.id), method: :delete,
+		data: { confirm: "Are you sure?" } %></small>
+<small class="pull-right"><%= link_to "Edit", edit_event_path %></small>
+
+<%= link_to "Home", root_path %>
+
+<div class="container">
+	<div class="row">
+				<p><%= @event.event_title %></p>
+				<p><%= @event.event_body %></p>
+				<p><%= @event.event_date %></p>	
+				<p><%= @event.event_time.strftime("%H:%M") %></p>	
+				<p><%= @event.event_location %></p>	
+	</div>
+</div>

@@ -14,6 +14,7 @@
 //= require activestorage
 //= require jquery3
 //= require popper
+//= require jquery-ui/widgets/datepicker
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .

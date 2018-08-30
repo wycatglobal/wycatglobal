@@ -1,2 +1,44 @@
 <h1>Albums#edit</h1>
 <p>Find me in app/views/albums/edit.html.erb</p>
+
+<%= form_for @album do |f| %>
+	<% if @album.errors.any? %>
+	    <% @album.errors.full_messages.each do |msg| %>
+	    	<div class="alert alert-danger"><%= msg %></div>
+	    <% end %>
+	<% end %>
+
+	<div class="form-group">
+		<%= f.label :name %>
+		<%= f.text_field :name, class:"form-control" %>
+	</div>
+
+    <div class="form-group">
+     	<%= f.label :description %>
+		<%= f.text_field :description, class:"form-control" %>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :cover_image %>
+		<%= f.file_field :cover_image%>
+	</div>
+	
+	<br>
+	<%= f.submit "Submit", class:"btn btn-primary" %>
+	<%= link_to "Cancel", album_path,class:"btn btn-primary" %>
+	</div>
+<% end %>
+
+
+<% if @images.exists? %>
+
+	<% @images.each_slice(6) do |image| %>
+
+		<% image.each do |img| %>
+		<%= image_tag img.image.url %>
+		<%= link_to "Edit", edit_image_path(img.id) %>
+		<center><%= link_to "Delete", image_path(img), class:"delete", method: :delete,
+		data: { confirm: "Are you sure?" } %></center>
+	<% end %>
+	<% end %>
+<% end %>
