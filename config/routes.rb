@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
   get 'upload' => 'images#new', :as => "upload"
   get 'membership' => 'memberships#new'
   resources :albums, :images, :events, :posts
