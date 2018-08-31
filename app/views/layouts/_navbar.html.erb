@@ -13,13 +13,13 @@
 	        <a class="nav-link" href="#">Gallery <span class="sr-only">(current)</span></a>
 	      </li>
 	      <li class="nav-item">
-	      	<%= link_to 'News', '#', class:"nav-link #{yield(:news_active)}" %>
+	      	<%= link_to 'News', posts_path , class:"nav-link #{yield(:news_active)}" %>
 	      </li>
 	      <li class="nav-item">
 	      	<%= link_to 'Membership', membership_path, class:"nav-link #{yield(:membership_active)}" %>
 	      </li>
 	      <li class="nav-item">
-	      	<%= link_to 'Events', events_path, class:"nav-link #{yield(:membership_active)}" %>
+	      	<%= link_to 'Events', events_path, class:"nav-link #{yield(:events_active)}" %>
 	      </li>	      
 	      <li class="nav-item dropdown">
 	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -31,6 +31,8 @@ gem 'jquery-rails'
 gem "font-awesome-rails"
 gem 'paperclip', '~> 6.1'
 gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
+gem 'friendly_id', '~> 5.2', '>= 5.2.4'
+gem 'acts-as-taggable-on', '~> 6.0'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

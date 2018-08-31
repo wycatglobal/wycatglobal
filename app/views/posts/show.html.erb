@@ -1,0 +1,29 @@
+<% provide(:news_active, 'active') %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @post.body %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @post.description %>
+</p>
+
+<p>
+	<strong>Tags:</strong>
+	<%= raw @post.tags.map { |t| link_to t.name, posts_path(tag: t.name) }.join(', ') %>
+</p>
+
+<% if @post.cover_image.exists? %>
+<%= image_tag @post.cover_image.url %>
+<% end %>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
