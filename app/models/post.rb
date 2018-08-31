@@ -11,4 +11,6 @@ class Post < ApplicationRecord
 
   has_attached_file :cover_image
   validates_attachment_content_type :cover_image, content_type: /\Aimage\/.*\z/	  
+
+  validates :title, :body, presence: true
 end
