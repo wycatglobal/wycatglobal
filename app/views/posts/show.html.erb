@@ -1,6 +1,15 @@
 <% provide(:news_active, 'active') %>
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'Home', root_path %>/<%= link_to 'News', posts_path %>/<%= @post.title %>/
+
+<br />
+
+<a href="http://twitter.com/home?status=<%= request.original_url %>" title="Share on Twitter" target="_blank" class="btn btn-twitter"><i class="fa fa-twitter"></i> Twitter</a>
+<a href="https://www.facebook.com/sharer/sharer.php?u=<%= request.original_url %>" title="Share on Facebook" target="_blank" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
+<a href="https://plus.google.com/share?url=<%= request.original_url %>" title="Share on Google+" target="_blank" class="btn btn-googleplus"><i class="fa fa-google-plus"></i> Google+</a>
+<a href="http://www.linkedin.com/shareArticle?mini=true&url=&title=&summary=<%= request.original_url %>" title="Share on LinkedIn" target="_blank" class="btn btn-linkedin"><i class="fa fa-linkedin"></i> LinkedIn</a>
+
 <p>
   <strong>Title:</strong>
   <%= @post.title %>

@@ -1,19 +1,23 @@
 <h1>Images#new</h1>
 <p>Find me in app/views/images/new.html.erb</p>
 
-<%= form_for @image, :html => {:multipart => true} do |f| %>
+<% if @albums.exists? %>
+	<%= form_for @image, :html => {:multipart => true} do |f| %>
+		<%= f.label :image_title %>
+		<%= f.text_field :image_title %>
 
-	<%= f.label :image_title %>
-	<%= f.text_field :image_title %>
+		<%= f.label :album %>
+		<%= f.select :album_id, Album.all.collect {|x| [x.name, x.id]}, {:include_blank => 'Select One'} %>
 
-	<%= f.label :album %>
-	<%= f.select :album_id, Album.all.collect {|x| [x.name, x.id]}, {:include_blank => 'Select One'} %>
+		<%= f.label :image_description %>
+		<%= f.text_area :image_description %>
 
-	<%= f.label :image_description %>
-	<%= f.text_area :image_description %>
+		<%= f.label :image %>
+		<%= f.file_field :image %>
 
-	<%= f.label :image %>
-	<%= f.file_field :image %>
-
-	<%= f.submit "Submit"%>
+		<%= f.submit "Submit"%>
+	<% end %>
+<% else %>
+	<%= link_to "Add Album", new_album_path%>
 <% end %>
+

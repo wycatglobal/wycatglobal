@@ -2,6 +2,8 @@
 <h1>Events#edit</h1>
 <p>Find me in app/views/events/edit.html.erb</p>
 
+<%= link_to 'Home', root_path %>/<%= link_to 'Events', events_path %>/<%= link_to @event.event_title, event_path(@event.id) %>/
+
 <div class="container">
 	<%= form_for @event, :html => {:multipart => true} do |f| %>
 

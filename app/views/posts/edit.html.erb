@@ -1,6 +1,8 @@
 <% provide(:news_active, 'active') %>
 <h1>Editing Post</h1>
 
+<%= link_to 'Home', root_path %>/<%= link_to 'News', posts_path %>/<%= link_to @post.title, post_path(@post.id) %>/
+
 <%= render 'form', post: @post %>
 
 <%= link_to 'Show', @post %> |

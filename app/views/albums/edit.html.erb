@@ -1,6 +1,8 @@
 <h1>Albums#edit</h1>
 <p>Find me in app/views/albums/edit.html.erb</p>
 
+<%= link_to 'Home', root_path %>/<%= link_to 'Albums', albums_path %>/<%= link_to @album.name, album_path(@album.id) %>/
+
 <%= form_for @album do |f| %>
 	<% if @album.errors.any? %>
 	    <% @album.errors.full_messages.each do |msg| %>
@@ -20,12 +22,20 @@
 
 	<div class="form-group">
 		<%= f.label :cover_image %>
-		<%= f.file_field :cover_image%>
+		<%= f.file_field :cover_image %>
 	</div>
 	
+	<div class="form-group">
+		<% if @album.cover_image.present? %>
+            <%= (image_tag @album.cover_image.url, style: 'height: 210px; display: block;') %>
+		<% else %>
+            <%= (image_tag "Thumbnail.png", style: 'height: 210px; display: block;') %>
+		<% end %>
+	</div>
+
 	<br>
 	<%= f.submit "Submit", class:"btn btn-primary" %>
-	<%= link_to "Cancel", album_path,class:"btn btn-primary" %>
+	<%= link_to "Cancel", album_path, class:"btn btn-primary" %>
 	</div>
 <% end %>
 

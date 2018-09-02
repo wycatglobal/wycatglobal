@@ -1,6 +1,7 @@
 class ImagesController < ApplicationController
   def new
     @image = Image.new
+    @albums = Album.all
   end
 
   def create
