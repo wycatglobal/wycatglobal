@@ -19,5 +19,3 @@
 //= require jquery-ui/widgets/datepicker
 //= require activestorage
 //= require_tree .
-
-

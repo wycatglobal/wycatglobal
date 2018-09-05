@@ -19,11 +19,12 @@
 	      	<%= link_to 'Membership', membership_path, class:"nav-link #{yield(:membership_active)}" %>
 	      </li>
 	      <li class="nav-item dropdown">
-	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	        <a class="nav-link dropdown-toggle <%= yield(:events_active) %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	          Events
 	        </a>
 	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	          <%= link_to 'Year Calendar', events_path ,class: 'dropdown-item' %>
+	          <%= link_to 'All Events', events_path ,class: 'dropdown-item' %>
+	          <%= link_to 'Year Calendar', events_calendar_path ,class: 'dropdown-item' %>
 	          <a class="dropdown-item" href="#">Another action</a>
 	          <a class="dropdown-item" href="#">Something else here</a>
 	        </div>

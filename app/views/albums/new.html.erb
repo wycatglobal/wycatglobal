@@ -10,7 +10,7 @@
   <%= form.text_field :description %>  
 
   <% if @album.cover_image.present? %>
-  	<%= (image_tag album.cover_image.url, style: 'height: 500px; width: 100%; display: block;') %>
+  	<%= (image_tag @album.cover_image.url, style: 'height: 500px; width: 100%; display: block;') %>
   <% end %>
 
   <%= form.label :cover_image %>

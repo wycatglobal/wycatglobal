@@ -1,0 +1,12 @@
+<% provide(:events_active, 'active') %>
+
+<%= link_to 'Home', root_path %>/Events
+
+<div class="container">
+	<br />
+	<br />
+	<% @events.each do |event| %>
+	  <%= event.event_title %>
+	  <%= event.event_date %>
+	<% end %>
+</div>
