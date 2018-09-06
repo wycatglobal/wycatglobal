@@ -72,19 +72,28 @@
 			<%= link_to "Cancel", album_path, class:"btn btn-primary" %>
 			<br/>
 			<br/>
+			<br/>
+			<br/>
+			<br/>
 		<% end %>
 
-		<% if @images.exists? %>
-
-			<% @images.each_slice(6) do |image| %>
-
-				<% image.each do |img| %>
-				<%= image_tag img.image.url %>
-				<%= link_to "Edit", edit_image_path(img.id), :style => 'text-decoration: none;' %>
-				<center><%= link_to "Delete", image_path(img), class:"delete", method: :delete, :style => 'text-decoration: none;',
-				data: { confirm: "Are you sure?" } %></center>
+		<div id="edit_images">
+			<% if @images.exists? %>
+				<% @images.each_slice(4) do |image| %>
+					<div class="row">
+						<% image.each do |img| %>
+							<div class="col-md-3" style="margin-bottom: 20px;">
+								<%= image_tag img.image.url, :style => 'height: 250px;width:100%;' %>
+								<center>
+									<%= link_to "Edit", edit_image_path(img.id), :style => 'text-decoration: none;' %>
+										<%= link_to "Delete", image_path(img), :class => 'delete',method: :delete, :style => 'text-decoration: none;',data: { confirm: "Are you sure?" } %>
+								</center>
+							</div>
+						<% end %>
+					</div>
+				<% end %>
 			<% end %>
-			<% end %>
-		<% end %>
+		</div>
+		<br/>
 	</div>
 </div>

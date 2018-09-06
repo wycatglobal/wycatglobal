@@ -30,19 +30,40 @@
 		<% if @albums.exists? %>
 
 			<%= form_for @image, :html => {:multipart => true} do |f| %>
-				<%= f.label :image_title %>
-				<%= f.text_field :image_title %>
 
-				<%= f.label :album %>
-				<%= f.select :album_id, Album.all.collect {|x| [x.name, x.id]}, {:include_blank => 'Select One'} %>
+				<div class="form-group row">
+					<%= f.label "Image_title:" %>
+					<div class="col-10">
+						<%= f.text_field :image_title %>
+					</div>
+				</div>
 
-				<%= f.label :image_description %>
-				<%= f.text_area :image_description %>
+				<div class="form-group row">
+					<%= f.label "Album:" %>
+					<div class="col-10">
+						<%= f.select :album_id, Album.all.collect {|x| [x.name, x.id]}, {:include_blank => 'Select One'} %>
+					</div>
+				</div>
 
-				<%= f.label :image %>
-				<%= f.file_field :image %>
+				<div class="form-group row">
+					<%= f.label "Image_description:" %>
+					<div class="col-10">
+						<%= f.text_area :image_description %>
+					</div>
+				</div>
 
-				<%= f.submit "Submit"%>
+				<div class="form-group row">
+					<%= f.label "Image:" %>
+					<div class="col-10">
+						<%= f.file_field :image %>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<div class="col-10">
+						<%= f.submit "Submit", class: "btn btn-primary" %>
+					</div>
+				</div>
 				<br/>
 				<br/>
 			<% end %>

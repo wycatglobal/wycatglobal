@@ -44,9 +44,9 @@
             <td><%= post.title %></td>
             <td><%= post.body.html_safe %></td>
             <td><%= post.description %></td>
-            <td><%= link_to 'Show', post %></td>
-            <td><%= link_to 'Edit', edit_post_path(post) %></td>
-            <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Show', post, :style => 'text-decoration: none;' %></td>
+            <td><%= link_to 'Edit', edit_post_path(post), :style => 'text-decoration: none;' %></td>
+            <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, :style => 'text-decoration: none;' %></td>
           </tr>
         <% end %>
       </tbody>

@@ -2,5 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).on "turbolinks:load", -> 
-  $('#event_event_date').datepicker
-    dateFormat: 'yy-mm-dd'
+  $('#event_event_date').datepicker({
+    dateFormat: 'yy-mm-dd',
+    changeMonth: true,
+    changeYear: true
+    });

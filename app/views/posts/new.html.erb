@@ -29,7 +29,7 @@
 		<br/>		
 		<h1>New Post</h1>
 
-		<%= render 'form', post: @post %>
-		<%= link_to 'Back', posts_path %>
+		<%= render 'form', post: @post, :style => 'text-decoration: none;' %>
+		<%= link_to 'Back', posts_path, :style => 'text-decoration: none;' %>
 	</div>
 </div>

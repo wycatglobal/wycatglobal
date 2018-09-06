@@ -1,9 +1,6 @@
-<h1>Albums#new</h1>
-<p>Find me in app/views/albums/new.html.erb</p>
-
 <div class="bg-color">
   <div class="container">
-
+    <br/>
     <div class="wrapper-bc">
       <section class="header-bc">
 
@@ -34,23 +31,31 @@
 
     <%= form_for @album, html: { multipart: true } do |form| %>
 
-      <%= form.label :name %>
-      <%= form.text_field :name %>
+      <div class="form-group row">
+        <%= form.label "Name:" %>
+        <div class="col-10">
+          <%= form.text_field :name %>
+        </div>
+      </div>
   
-      <%= form.label :description %>
-      <%= form.text_field :description %>  
+      <div class="form-group row">
+        <%= form.label "Description:" %>
+        <div class="col-10">
+          <%= form.text_field :description %>  
+        </div>
+      </div>
 
-      <% if @album.cover_image.present? %>
-      	<%= (image_tag @album.cover_image.url, style: 'height: 500px; width: 100%; display: block;') %>
-      <% end %>
-
-      <%= form.label :cover_image %>
-      <%= form.file_field :cover_image %>
-      <%= form.submit %>
+      <div class="form-group row">
+        <%= form.label "Cover Image:" %>
+        <div class="col-10">
+          <%= form.file_field :cover_image %>
+        </div>
+      </div>
+      
+      <%= form.submit "Submit", class: "btn btn-primary" %>
 
       <br/>
       <br/>
-
     <% end %>
   </div>
 </div>
