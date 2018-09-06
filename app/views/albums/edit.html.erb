@@ -29,7 +29,7 @@
 		<% if @album.cover_image.present? %>
             <%= (image_tag @album.cover_image.url, style: 'height: 210px; display: block;') %>
 		<% else %>
-            <%= (image_tag "Thumbnail.png", style: 'height: 210px; display: block;') %>
+            <p>There are no images!</p>
 		<% end %>
 	</div>
 

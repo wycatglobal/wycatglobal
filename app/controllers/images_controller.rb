@@ -5,6 +5,7 @@ class ImagesController < ApplicationController
   end
 
   def create
+    @albums = Album.all
     @image = Image.new(image_params)
 
     if @image.save

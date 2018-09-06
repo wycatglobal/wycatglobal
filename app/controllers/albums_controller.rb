@@ -45,7 +45,7 @@ class AlbumsController < ApplicationController
 
   def show
     @album = Album.find(params[:id])
-    @images = @album.images
+    @images = @album.images.paginate(:page => params[:page], :per_page => 20)
   end
 
   private
