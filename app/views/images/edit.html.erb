@@ -1,37 +1,62 @@
-<h1>Images#edit</h1>
-<p>Find me in app/views/images/edit.html.erb</p>
+<div class="bg-color">
+	<div class="container">
+		<br/>
 
-<div class="container">
-	<br/>
-	<h2>Edit <%= @image.image_title %></h2>
-			<%= image_tag @image.image.url %>
+		<div class="wrapper-bc">
+			<section class="header-bc">
 
-	<%= form_for @image, :html => {:multipart => true} do |f| %>
+  				<div class="logo-and-nav-wrap">
+			
+					<div class="site-nav-wrap">
+         				<nav class="nav-bc">
+					
+							<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc"><a href="/">Home</a></span>
+							</div>
+							<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc"><%= link_to 'Albums', albums_path %></span>
+							</div>							
+           					<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc">Edit Image</span>
+							</div>							
+						</nav>
+					</div>
+				</div>
+			</section>
+  		</div>		
+		<br/>
 
-		<% if @image.errors.any? %>
-		    <% @image.errors.full_messages.each do |msg| %>
-		    	<div class="alert alert-danger"><%= msg %></div>
-		    <% end %>
+		<h2>Edit <%= @image.image_title %></h2>
+		<%= image_tag @image.image.url %>
+
+		<%= form_for @image, :html => {:multipart => true} do |f| %>
+
+			<% if @image.errors.any? %>
+				<% @image.errors.full_messages.each do |msg| %>
+		    		<div class="alert alert-danger"><%= msg %></div>
+		    	<% end %>
+			<% end %>
+
+			<div class="form-group">
+				<%= f.label :image_title %>
+				<%= f.text_field :image_title, class:"form-control" %>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :image_description %>
+				<%= f.text_area :image_description, class:"form-control" %>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :image %>
+				<%= f.file_field :image %>
+			</div>
+
+			<br>
+			<%= f.submit "Submit", class:"btn btn-primary" %>
+			<%= link_to "Cancel", images_path,class:"btn btn-primary" %>
+			<br/>
+			<br/>
 		<% end %>
-
-		<div class="form-group">
-			<%= f.label :image_title %>
-			<%= f.text_field :image_title, class:"form-control" %>
-		</div>
-
-		<div class="form-group">
-			<%= f.label :image_description %>
-			<%= f.text_area :image_description, class:"form-control" %>
-		</div>
-
-		<div class="form-group">
-			<%= f.label :image %>
-			<%= f.file_field :image %>
-		</div>
-
-		<br>
-		<%= f.submit "Submit", class:"btn btn-primary" %>
-		<%= link_to "Cancel", images_path,class:"btn btn-primary" %>
-		</div>
-	<% end %>
+	</div>
 </div>

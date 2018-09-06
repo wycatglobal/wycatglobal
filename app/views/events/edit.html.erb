@@ -1,37 +1,71 @@
 <% provide(:events_active, 'active') %>
-<h1>Events#edit</h1>
-<p>Find me in app/views/events/edit.html.erb</p>
 
-<%= link_to 'Home', root_path %>/<%= link_to 'Events', events_path %>/<%= link_to @event.event_title, event_path(@event.id) %>/
+<div class="bg-color">
+	<div class="container">
+		<div class="wrapper-bc">
+			<section class="header-bc">
+<br/>
+  				<div class="logo-and-nav-wrap">
+			
+					<div class="site-nav-wrap">
+         				<nav class="nav-bc">
+					
+							<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc"><a href="/">Home</a></span>
+							</div>
+							<div class="single-breadcrumb-wrap">
+								<span class="sep">
+									<i class="fa fa-caret-right"></i>
+								</span>
+								<%= link_to 'Events', events_path, :class => "breadcrumb-bc" %>
+							</div>					
+           					<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc"><%= link_to @event.event_title, event_path(@event.id) %></span>
+							</div>
+           					<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc">Edit</span>
+							</div>							
+						</nav>
+					</div>
+				</div>
+			</section>
+  		</div>		
+		<br/>
 
-<div class="container">
-	<%= form_for @event, :html => {:multipart => true} do |f| %>
+		<div class="container">
+			<h2>Edit <%= @event.event_title %></h2>
+			<br/>
+			<%= form_for @event, :html => {:multipart => true} do |f| %>
 
-	<div class="form-group">
-		<%= f.label :event_title %>
-		<%= f.text_field :event_title %>
+				<div class="form-group">
+					<%= f.label :event_title %>
+					<%= f.text_field :event_title %>
+				</div>
+
+				<div class="form-group">
+					<%= f.label :event_body %>
+					<%= f.text_field :event_body %>	
+				</div>
+					
+				<div class="form-group">
+					<%= f.label :event_date %>
+					<%= f.text_field :event_date %>
+				</div>
+
+				<div class="form-group">
+					<%= f.label :event_time %>
+					<%= f.time_select :event_time %>
+				</div>
+
+				<div class="form-group">
+					<%= f.label :event_location %>
+					<%= f.text_field :event_location %>	
+				</div>
+
+					<%= f.submit "Submit"%>
+					<br/>
+					<br/>
+			<% end %>
+		</div>
 	</div>
-
-	<div class="form-group">
-		<%= f.label :event_body %>
-		<%= f.text_field :event_body %>	
-	</div>
-		
-	<div class="form-group">
-		<%= f.label :event_date %>
-		<%= f.text_field :event_date %>
-	</div>
-
-	<div class="form-group">
-		<%= f.label :event_time %>
-		<%= f.time_select :event_time %>
-	</div>
-
-	<div class="form-group">
-		<%= f.label :event_location %>
-		<%= f.text_field :event_location %>	
-	</div>
-
-		<%= f.submit "Submit"%>
-	<% end %>
 </div>

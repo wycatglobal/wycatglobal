@@ -1,25 +1,53 @@
 <% provide(:events_active, 'active') %>
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
 
-<%= link_to 'Home', root_path %>/<%= link_to 'Events', events_path %>/Calendar
+<div class="bg-color">
+	<div class="container">
+		<br/>
 
-<div class="container">
-	<div id="events">
-	  <h2 id="month">
-	    <%= link_to "<", date: @date.prev_month %>
-	    <%= @date.strftime("%B %Y") %>
-	    <%= link_to ">", date: @date.next_month %>
-	  </h2>
-	  <%= calendar @date do |date| %>
-	    <%= date.day %>
-	    <% if @events_by_date[date] %>
-	      <ul>
-	        <% @events_by_date[date].each do |event| %>
-	          <li><%= link_to event.event_title, event %></li>
-	        <% end %>
-	      </ul>
-	    <% end %>
-	  <% end %>
+		<div class="wrapper-bc">
+			<section class="header-bc">
+
+  				<div class="logo-and-nav-wrap">
+			
+					<div class="site-nav-wrap">
+         				<nav class="nav-bc">
+					
+							<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc"><a href="/">Home</a></span>
+							</div>
+							<div class="single-breadcrumb-wrap">
+								<span class="sep">
+									<i class="fa fa-caret-right"></i>
+								</span>
+								<%= link_to 'Events', events_path, :class => "breadcrumb-bc" %>
+							</div>					
+           					<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc">Calendar</span>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</section>
+  		</div>		
+
+		<div id="events">
+			<h2 id="month">
+	    		<%= link_to "<", date: @date.prev_month %>
+	    		<%= @date.strftime("%B %Y") %>
+			    <%= link_to ">", date: @date.next_month %>
+	  		</h2>
+
+	  		<%= calendar @date do |date| %>
+	  			<%= date.day %>
+	    		<% if @events_by_date[date] %>
+	      			<ul>
+	        			<% @events_by_date[date].each do |event| %>
+	          				<li><%= link_to event.event_title, event %></li>
+	        			<% end %>
+	      			</ul>
+	    		<% end %>
+	  		<% end %>
+		</div>
 	</div>
+	<br/>
 </div>

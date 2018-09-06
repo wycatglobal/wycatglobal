@@ -1,23 +1,53 @@
-<h1>Images#new</h1>
-<p>Find me in app/views/images/new.html.erb</p>
+<div class="bg-color">
+	<div class="container">
 
-<% if @albums.exists? %>
-	<%= form_for @image, :html => {:multipart => true} do |f| %>
-		<%= f.label :image_title %>
-		<%= f.text_field :image_title %>
+		<br/>
 
-		<%= f.label :album %>
-		<%= f.select :album_id, Album.all.collect {|x| [x.name, x.id]}, {:include_blank => 'Select One'} %>
+		<div class="wrapper-bc">
+			<section class="header-bc">
 
-		<%= f.label :image_description %>
-		<%= f.text_area :image_description %>
+  				<div class="logo-and-nav-wrap">
+			
+					<div class="site-nav-wrap">
+         				<nav class="nav-bc">
+					
+							<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc"><a href="/">Home</a></span>
+							</div>
+							<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc"><%= link_to 'Albums', albums_path %></span>
+							</div>							
+           					<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc">Add Image</span>
+							</div>							
+						</nav>
+					</div>
+				</div>
+			</section>
+  		</div>		
+		<br/>		
 
-		<%= f.label :image %>
-		<%= f.file_field :image %>
+		<% if @albums.exists? %>
 
-		<%= f.submit "Submit"%>
-	<% end %>
-<% else %>
-	<%= link_to "Add Album", new_album_path%>
-<% end %>
+			<%= form_for @image, :html => {:multipart => true} do |f| %>
+				<%= f.label :image_title %>
+				<%= f.text_field :image_title %>
 
+				<%= f.label :album %>
+				<%= f.select :album_id, Album.all.collect {|x| [x.name, x.id]}, {:include_blank => 'Select One'} %>
+
+				<%= f.label :image_description %>
+				<%= f.text_area :image_description %>
+
+				<%= f.label :image %>
+				<%= f.file_field :image %>
+
+				<%= f.submit "Submit"%>
+				<br/>
+				<br/>
+			<% end %>
+		<% else %>
+			<%= link_to "Add Album", new_album_path%>
+		<% end %>
+	</div>
+</div>

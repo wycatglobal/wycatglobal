@@ -1,20 +1,56 @@
 <h1>Albums#new</h1>
 <p>Find me in app/views/albums/new.html.erb</p>
 
-<%= form_for @album, html: { multipart: true } do |form| %>
+<div class="bg-color">
+  <div class="container">
 
-  <%= form.label :name %>
-  <%= form.text_field :name %>
+    <div class="wrapper-bc">
+      <section class="header-bc">
+
+          <div class="logo-and-nav-wrap">
+      
+          <div class="site-nav-wrap">
+            <nav class="nav-bc">
+          
+              <div class="single-breadcrumb-wrap">
+                <span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc"><a href="/">Home</a></span>
+              </div>
+              <div class="single-breadcrumb-wrap">
+                <span class="sep">
+                  <i class="fa fa-caret-right"></i>
+                </span>
+                <%= link_to 'Albums', albums_path, :class => "breadcrumb-bc" %>
+              </div>         
+              <div class="single-breadcrumb-wrap">
+                <span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc">New Album</span>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </section>
+      </div>    
+
+    <br/>
+
+    <%= form_for @album, html: { multipart: true } do |form| %>
+
+      <%= form.label :name %>
+      <%= form.text_field :name %>
   
-  <%= form.label :description %>
-  <%= form.text_field :description %>  
+      <%= form.label :description %>
+      <%= form.text_field :description %>  
 
-  <% if @album.cover_image.present? %>
-  	<%= (image_tag @album.cover_image.url, style: 'height: 500px; width: 100%; display: block;') %>
-  <% end %>
+      <% if @album.cover_image.present? %>
+      	<%= (image_tag @album.cover_image.url, style: 'height: 500px; width: 100%; display: block;') %>
+      <% end %>
 
-  <%= form.label :cover_image %>
-  <%= form.file_field :cover_image %>
-  <%= form.submit %>
+      <%= form.label :cover_image %>
+      <%= form.file_field :cover_image %>
+      <%= form.submit %>
 
-<% end %>
+      <br/>
+      <br/>
+
+    <% end %>
+  </div>
+</div>

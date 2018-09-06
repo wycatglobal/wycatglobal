@@ -1,9 +1,41 @@
 <% provide(:news_active, 'active') %>
-<h1>Editing Post</h1>
 
-<%= link_to 'Home', root_path %>/<%= link_to 'News', posts_path %>/<%= link_to @post.title, post_path(@post.id) %>/
+<div class="bg-color">
+	<div class="container">
+		<br/>
+		<div class="wrapper-bc">
+			<section class="header-bc">
 
-<%= render 'form', post: @post %>
+  				<div class="logo-and-nav-wrap">
+			
+					<div class="site-nav-wrap">
+         				<nav class="nav-bc">
+					
+							<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc"><a href="/">Home</a></span>
+							</div>
+							<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc"><%= link_to 'News', posts_path %></span>
+							</div>							
+           					<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc"><%= link_to @post.title, post_path(@post.id) %></span>
+							</div>		
+							<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc">Edit Post</span>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</section>
+  		</div>		
+		<br/>
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+		
+		<h1>Editing Post</h1>
+
+		<%= render 'form', post: @post %>
+
+		<%= link_to 'Show', @post %> |
+		<%= link_to 'Back', posts_path %>
+	</div>
+</div>

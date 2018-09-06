@@ -1,6 +1,35 @@
 <% provide(:news_active, 'active') %>
-<h1>New Post</h1>
 
-<%= render 'form', post: @post %>
+<div class="bg-color">
+	<div class="container">
+		<br/>
+		<br/>
+		<div class="wrapper-bc">
+			<section class="header-bc">
 
-<%= link_to 'Back', posts_path %>
+  				<div class="logo-and-nav-wrap">
+			
+					<div class="site-nav-wrap">
+         				<nav class="nav-bc">
+					
+							<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc"><a href="/">Home</a></span>
+							</div>
+							<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc"><%= link_to 'News', posts_path %></span>
+							</div>									
+							<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc">New Post</span>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</section>
+  		</div>		
+		<br/>		
+		<h1>New Post</h1>
+
+		<%= render 'form', post: @post %>
+		<%= link_to 'Back', posts_path %>
+	</div>
+</div>

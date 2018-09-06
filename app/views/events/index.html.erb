@@ -1,34 +1,59 @@
 <% provide(:events_active, 'active') %>
 
-<%= link_to 'Home', root_path %>/Events
+<div class="bg-color">
+	<div class="container">
+		<br/>
 
-<div class="container">
-	<br />
-	<br />
-	<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-	  <li class="nav-item">
-	    <a class="nav-link active" id="pills-upcoming-tab" data-toggle="pill" href="#pills-upcoming" role="tab" aria-controls="pills-upcoming" aria-selected="true">Upcoming</a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" id="pills-past-tab" data-toggle="pill" href="#pills-past" role="tab" aria-controls="pills-past" aria-selected="false">Past</a>
-	  </li>
-	</ul>
-	<div class="tab-content" id="pills-tabContent">
-	  <div class="tab-pane fade show active" id="pills-upcoming" role="tabpanel" aria-labelledby="pills-upcoming-tab">
-	  <% @events.each do |event| %>
-	  <% if event.event_date >= Date.today %>
-	  		<%= event.event_title %>
-	  		<%= event.event_date %>
-	<% end %>
-	<% end %>	  
-</div>
-	  <div class="tab-pane fade" id="pills-past" role="tabpanel" aria-labelledby="pills-past-tab">
-	  	  <% @events.each do |event| %>
-	  <% if event.event_date < Date.today %>
-	  		<%= event.event_title %>
-	  		<%= event.event_date %>
-	<% end %>
-	<% end %>
-	  </div>
+		<div class="wrapper-bc">
+			<section class="header-bc">
+
+  				<div class="logo-and-nav-wrap">
+			
+					<div class="site-nav-wrap">
+         				<nav class="nav-bc">
+					
+							<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc"><a href="/">Home</a></span>
+							</div>
+           					<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc">Events</span>
+							</div>							
+						</nav>
+					</div>
+				</div>
+			</section>
+  		</div>			
+		<br />
+		<br />
+
+		<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+	  		<li class="nav-item">
+	    		<a class="nav-link active" id="pills-upcoming-tab" data-toggle="pill" href="#pills-upcoming" role="tab" aria-controls="pills-upcoming" aria-selected="true">Upcoming</a>
+	  		</li>
+	  		<li class="nav-item">
+	    		<a class="nav-link" id="pills-past-tab" data-toggle="pill" href="#pills-past" role="tab" aria-controls="pills-past" aria-selected="false">Past</a>
+	  		</li>
+		</ul>
+		
+		<div class="tab-content" id="pills-tabContent">
+	  		<div class="tab-pane fade show active" id="pills-upcoming" role="tabpanel" aria-labelledby="pills-upcoming-tab">
+	  			<% @events.each do |event| %>
+	  				<% if event.event_date >= Date.today %>
+	  					<%= link_to event.event_title, event %>
+	  					<%= event.event_date %>
+					<% end %>
+				<% end %>	  
+			</div>
+	  		
+	  		<div class="tab-pane fade" id="pills-past" role="tabpanel" aria-labelledby="pills-past-tab">
+	  	  		<% @events.each do |event| %>
+	  				<% if event.event_date < Date.today %>
+	  					<%= link_to event.event_title, event %>
+	  					<%= event.event_date %>
+					<% end %>
+				<% end %>
+	  		</div>
+		</div>
 	</div>
+	<br/>
 </div>

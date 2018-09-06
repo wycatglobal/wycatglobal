@@ -1,33 +1,57 @@
 <% provide(:news_active, 'active') %>
-<p id="notice"><%= notice %></p>
 
-<h1>Posts</h1>
+<div class="bg-color">
+  <div class="container">
+    <br/>
+    <br/>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>Description</th>
-      <th>Slug</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <div class="wrapper-bc">
+      <section class="header-bc">
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.body.html_safe %></td>
-        <td><%= post.description %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <div class="logo-and-nav-wrap">
+      
+          <div class="site-nav-wrap">
+                <nav class="nav-bc">
+          
+              <div class="single-breadcrumb-wrap">
+                <span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc"><a href="/">Home</a></span>
+              </div>              
+              <div class="single-breadcrumb-wrap">
+                <span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc">News</span>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </section>
+      </div>      
+    <br/>
+    <h1>Posts</h1>
+    <%= link_to 'New Post', new_post_path, :class => 'pull-right', :style => 'text-decoration: none;' %>
 
-<br>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Body</th>
+          <th>Description</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<%= link_to 'New Post', new_post_path %>
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%= post.title %></td>
+            <td><%= post.body.html_safe %></td>
+            <td><%= post.description %></td>
+            <td><%= link_to 'Show', post %></td>
+            <td><%= link_to 'Edit', edit_post_path(post) %></td>
+            <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+  </div>
+</div>

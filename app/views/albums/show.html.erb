@@ -1,65 +1,91 @@
-<h1>Albums#show</h1>
-<p>Find me in app/views/albums/show.html.erb</p>
+<div class="bg-color">
+	<br/>
+	<div class="container">
 
-<div class="container">
-	<%= link_to 'Home', root_path %>/<%= link_to 'Albums', albums_path %>/<%= @album.name %>
-	<div class="float-right">
-		<div id="social-media-icons">
-			<a href="http://www.linkedin.com/shareArticle?mini=true&url=&title=&summary=<%= request.original_url %>" title="Share on LinkedIn" target="_blank" style="color:#666">
-				<i class="fa fa-linkedin fa-2x"></i>
-			</a>
-		</div>
-		<div id="social-media-icons">
-			<a href="http://twitter.com/home?status=<%= request.original_url %>" title="Share on Twitter" target="_blank" style="color:#666">
-				<i class="fa fa-twitter fa-2x"></i>
-			</a>
-		</div>
-		<div id="social-media-icons">
-			<a href="https://www.facebook.com/sharer/sharer.php?u=<%= request.original_url %>" title="Share on Facebook" target="_blank" style="color:#666">
-				<i class="fa fa-facebook fa-2x"></i>
-			</a>
-		</div>
-		<div id="social-media-icons">
-			<a href="https://plus.google.com/share?url=<%= request.original_url %>" title="Share on Google+" target="_blank" style="color:#666">
-				<i class="fa fa-google-plus fa-2x"></i>
-			</a>
-		</div>
-	</div>
+		<div class="wrapper-bc">
+			<section class="header-bc">
 
-	<div class="container gallery-container">
-		<small class="pull-right"><%= link_to "Delete", album_path(@album.id), method: :delete,
-			data: { confirm: "Are you sure?" } %></small>
-		<small class="pull-right"><%= link_to "Edit", edit_album_path %></small>
-		<small class="pull-right"><%= link_to "Add", upload_path %></small>
-	    <h1><%= @album.name %></h1>
-	    <p class="page-description text-center"><%= @album.description %></p>
-	    <div class="tz-gallery">
-	        <div class="row">
-	        	<% if @images.exists? %>
-	        		<% @images.each do |img| %>
-	            		<div class="col-sm-6 col-md-3">
-	                		<div class="thumbnail">
-	                    		<a class="lightbox" href="<%= img.image.url %>">
-	                        		<img src="<%= img.image.url %>" alt="Park" style="display: block;width: 100%;height: 250px;">
-	                    		</a>
-	                    		<% if img.image_title.length>0 or img.image_description.length>0 %>
-		                    		<div class="caption">
-		                    			<% if img.image_title.length>0 %>
-		                        			<h3><%= img.image_title %></h3>
-		                        		<% end %>
-		                        		<% if img.image_description.length>0 %>
-		                        			<p><%= truncate(img.image_description, length:125) %></p>
-		                        		<% end %>
-		                    		</div>
-		                    	<% end %>
-	                		</div>
-	            		</div>
-	            	<% end %>
-	            <% else %>
-	            	<p>There are no images!</p>
-	            <% end %>
-	        </div>
-	    </div>
+  				<div class="logo-and-nav-wrap">
+			
+					<div class="site-nav-wrap">
+         				<nav class="nav-bc">
+					
+							<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc"><a href="/">Home</a></span>
+							</div>
+							<div class="single-breadcrumb-wrap">
+								<span class="sep">
+									<i class="fa fa-caret-right"></i>
+								</span>
+								<%= link_to 'Albums', albums_path, :class => "breadcrumb-bc" %>
+							</div>					
+           					<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc"><%= @album.name %></span>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</section>
+  		</div>
+
+		<div class="float-right">
+			<div id="social-media-icons">
+				<a href="http://www.linkedin.com/shareArticle?mini=true&url=&title=&summary=<%= request.original_url %>" title="Share on LinkedIn" target="_blank" style="color:#666">
+					<i class="fa fa-linkedin fa-2x"></i>
+				</a>
+			</div>
+			<div id="social-media-icons">
+				<a href="http://twitter.com/home?status=<%= request.original_url %>" title="Share on Twitter" target="_blank" style="color:#666">
+					<i class="fa fa-twitter fa-2x"></i>
+				</a>
+			</div>
+			<div id="social-media-icons">
+				<a href="https://www.facebook.com/sharer/sharer.php?u=<%= request.original_url %>" title="Share on Facebook" target="_blank" style="color:#666">
+					<i class="fa fa-facebook fa-2x"></i>
+				</a>
+			</div>
+			<div id="social-media-icons">
+				<a href="https://plus.google.com/share?url=<%= request.original_url %>" title="Share on Google+" target="_blank" style="color:#666">
+					<i class="fa fa-google-plus fa-2x"></i>
+				</a>
+			</div>
+		</div>
+
+		<div class="container gallery-container">
+			<small class="pull-right"><%= link_to "Delete", album_path(@album.id), method: :delete,
+				data: { confirm: "Are you sure?" } %></small>
+			<small class="pull-right"><%= link_to "Edit", edit_album_path %></small>
+			<small class="pull-right"><%= link_to "Add", upload_path %></small>
+		    <h1><%= @album.name %></h1>
+		    <p class="page-description text-center"><%= @album.description %></p>
+		    <div class="tz-gallery">
+		        <div class="row">
+		        	<% if @images.exists? %>
+		        		<% @images.each do |img| %>
+		            		<div class="col-sm-6 col-md-3">
+		                		<div class="thumbnail">
+		                    		<a class="lightbox" href="<%= img.image.url %>">
+		                        		<img src="<%= img.image.url %>" alt="Park" style="display: block;width: 100%;height: 250px;">
+		                    		</a>
+		                    		<% if img.image_title.length>0 or img.image_description.length>0 %>
+			                    		<div class="caption">
+			                    			<% if img.image_title.length>0 %>
+			                        			<h3><%= img.image_title %></h3>
+			                        		<% end %>
+			                        		<% if img.image_description.length>0 %>
+			                        			<p><%= truncate(img.image_description, length:125) %></p>
+			                        		<% end %>
+			                    		</div>
+			                    	<% end %>
+		                		</div>
+		            		</div>
+		            	<% end %>
+		            <% else %>
+		            	<p>There are no images!</p>
+		            <% end %>
+		        </div>
+		    </div>
+		</div>
 	</div>
 </div>
 
@@ -70,3 +96,4 @@
 <script>
     baguetteBox.run('.tz-gallery');
 </script>
+

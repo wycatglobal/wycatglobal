@@ -1,27 +1,51 @@
 <% provide(:events_active, 'active') %>
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
 
-<%= link_to 'Home', root_path %>/<%= link_to 'Events', events_path %>/<%= @event.event_title %>
+<div class="bg-color">
+	<div class="container">
+		<br/>
 
-<br/>
+		<div class="wrapper-bc">
+			<section class="header-bc">
 
-<a href="http://twitter.com/home?status=<%= request.original_url %>" title="Share on Twitter" target="_blank" class="btn btn-twitter"><i class="fa fa-twitter"></i> Twitter</a>
-<a href="https://www.facebook.com/sharer/sharer.php?u=<%= request.original_url %>" title="Share on Facebook" target="_blank" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
-<a href="https://plus.google.com/share?url=<%= request.original_url %>" title="Share on Google+" target="_blank" class="btn btn-googleplus"><i class="fa fa-google-plus"></i> Google+</a>
-<a href="http://www.linkedin.com/shareArticle?mini=true&url=&title=&summary=<%= request.original_url %>" title="Share on LinkedIn" target="_blank" class="btn btn-linkedin"><i class="fa fa-linkedin"></i> LinkedIn</a>
-<a href="https://www.google.com/bookmarks/mark?op=edit&output=popup&bkmk=<%= request.original_url %>&title=<%= @event.event_title %>" title="Add to Google Bookmark" target="_blank" class="btn btn-bookmark"><i class="fa fa-bookmark"></i> Google Bookmark</a>
+  				<div class="logo-and-nav-wrap">
+			
+					<div class="site-nav-wrap">
+         				<nav class="nav-bc">
+					
+							<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc"><a href="/">Home</a></span>
+							</div>
+							<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc"><%= link_to 'Events', events_path %></span>
+							</div>							
+           					<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc"><%= @event.event_title %></span>
+							</div>							
+						</nav>
+					</div>
+				</div>
+			</section>
+  		</div>		
+		<br/>
 
-<small class="pull-right"><%= link_to "Delete", event_path(@event.id), method: :delete,
+		<a href="http://twitter.com/home?status=<%= request.original_url %>" title="Share on Twitter" target="_blank" class="btn btn-twitter"><i class="fa fa-twitter"></i> Twitter</a>
+		<a href="https://www.facebook.com/sharer/sharer.php?u=<%= request.original_url %>" title="Share on Facebook" target="_blank" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
+		<a href="https://plus.google.com/share?url=<%= request.original_url %>" title="Share on Google+" target="_blank" class="btn btn-googleplus"><i class="fa fa-google-plus"></i> Google+</a>
+		<a href="http://www.linkedin.com/shareArticle?mini=true&url=&title=&summary=<%= request.original_url %>" title="Share on LinkedIn" target="_blank" class="btn btn-linkedin"><i class="fa fa-linkedin"></i> LinkedIn</a>
+		<a href="https://www.google.com/bookmarks/mark?op=edit&output=popup&bkmk=<%= request.original_url %>&title=<%= @event.event_title %>" title="Add to Google Bookmark" target="_blank" class="btn btn-bookmark"><i class="fa fa-bookmark"></i> Google Bookmark</a>
+
+		<small class="pull-right"><%= link_to "Delete", event_path(@event.id), method: :delete,
 		data: { confirm: "Are you sure?" } %></small>
-<small class="pull-right"><%= link_to "Edit", edit_event_path %></small>
+		<small class="pull-right"><%= link_to "Edit", edit_event_path %></small>
 
-<div class="container">
-	<div class="row">
+		<div class="container">
+			<div class="row">
 				<p><%= @event.event_title %></p>
 				<p><%= @event.event_body %></p>
 				<p><%= @event.event_date %></p>	
 				<p><%= @event.event_time.strftime("%H:%M") %></p>	
 				<p><%= @event.event_location %></p>	
+			</div>
+		</div>
 	</div>
 </div>

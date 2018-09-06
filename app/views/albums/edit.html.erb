@@ -1,54 +1,90 @@
-<h1>Albums#edit</h1>
-<p>Find me in app/views/albums/edit.html.erb</p>
+<div class="bg-color">
+	<div class="container">
+		<br/>
 
-<%= link_to 'Home', root_path %>/<%= link_to 'Albums', albums_path %>/<%= link_to @album.name, album_path(@album.id) %>/
+		<div class="wrapper-bc">
+			<section class="header-bc">
 
-<%= form_for @album do |f| %>
-	<% if @album.errors.any? %>
-	    <% @album.errors.full_messages.each do |msg| %>
-	    	<div class="alert alert-danger"><%= msg %></div>
-	    <% end %>
-	<% end %>
+  				<div class="logo-and-nav-wrap">
+			
+					<div class="site-nav-wrap">
+         				<nav class="nav-bc">
+					
+							<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc"><a href="/">Home</a></span>
+							</div>
+							<div class="single-breadcrumb-wrap">
+								<span class="sep">
+									<i class="fa fa-caret-right"></i>
+								</span>
+								<%= link_to 'Albums', albums_path, :class => "breadcrumb-bc" %>
+							</div>
+							<div class="single-breadcrumb-wrap">
+								<span class="sep">
+									<i class="fa fa-caret-right"></i>
+								</span>
+								<%= link_to @album.name, album_path(@album.id), :class => "breadcrumb-bc" %>
+							</div>					
+           					<div class="single-breadcrumb-wrap">
+								<span class="sep"><i class="fa fa-caret-right"></i></span> <span class="breadcrumb-bc">Edit</span>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</section>
+  		</div>
 
-	<div class="form-group">
-		<%= f.label :name %>
-		<%= f.text_field :name, class:"form-control" %>
-	</div>
+  		<br/>
+  		<h2>Edit <%= @album.name %></h2>
+		<%= form_for @album do |f| %>
+		<br/>
+			<% if @album.errors.any? %>
+			    <% @album.errors.full_messages.each do |msg| %>
+			    	<div class="alert alert-danger"><%= msg %></div>
+			    <% end %>
+			<% end %>
 
-    <div class="form-group">
-     	<%= f.label :description %>
-		<%= f.text_field :description, class:"form-control" %>
-	</div>
+			<div class="form-group">
+				<%= f.label :name %>
+				<%= f.text_field :name, class:"form-control" %>
+			</div>
 
-	<div class="form-group">
-		<%= f.label :cover_image %>
-		<%= f.file_field :cover_image %>
-	</div>
-	
-	<div class="form-group">
-		<% if @album.cover_image.present? %>
-            <%= (image_tag @album.cover_image.url, style: 'height: 210px; display: block;') %>
-		<% else %>
-            <p>There are no images!</p>
+		    <div class="form-group">
+		     	<%= f.label :description %>
+				<%= f.text_field :description, class:"form-control" %>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :cover_image %>
+				<%= f.file_field :cover_image %>
+			</div>
+			
+			<div class="form-group">
+				<% if @album.cover_image.present? %>
+		            <%= (image_tag @album.cover_image.url, style: 'height: 210px; display: block;') %>
+				<% else %>
+		            <p>There are no images!</p>
+				<% end %>
+			</div>
+
+			
+			<%= f.submit "Submit", class:"btn btn-primary" %>
+			<%= link_to "Cancel", album_path, class:"btn btn-primary" %>
+			<br/>
+			<br/>
+		<% end %>
+
+		<% if @images.exists? %>
+
+			<% @images.each_slice(6) do |image| %>
+
+				<% image.each do |img| %>
+				<%= image_tag img.image.url %>
+				<%= link_to "Edit", edit_image_path(img.id), :style => 'text-decoration: none;' %>
+				<center><%= link_to "Delete", image_path(img), class:"delete", method: :delete, :style => 'text-decoration: none;',
+				data: { confirm: "Are you sure?" } %></center>
+			<% end %>
+			<% end %>
 		<% end %>
 	</div>
-
-	<br>
-	<%= f.submit "Submit", class:"btn btn-primary" %>
-	<%= link_to "Cancel", album_path, class:"btn btn-primary" %>
-	</div>
-<% end %>
-
-
-<% if @images.exists? %>
-
-	<% @images.each_slice(6) do |image| %>
-
-		<% image.each do |img| %>
-		<%= image_tag img.image.url %>
-		<%= link_to "Edit", edit_image_path(img.id) %>
-		<center><%= link_to "Delete", image_path(img), class:"delete", method: :delete,
-		data: { confirm: "Are you sure?" } %></center>
-	<% end %>
-	<% end %>
-<% end %>
+</div>
