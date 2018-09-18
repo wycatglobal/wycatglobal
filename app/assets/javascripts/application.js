@@ -17,6 +17,7 @@
 //= require bootstrap-sprockets
 //= require ckeditor/init
 //= require jquery-ui/widgets/datepicker
+//= require navbarscroll
 //= require baguetteBox.min
 //= require activestorage
 //= require_tree .

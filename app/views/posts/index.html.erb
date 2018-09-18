@@ -26,7 +26,11 @@
       </div>      
     <br/>
     <h1>Posts</h1>
-    <%= link_to 'New Post', new_post_path, :class => 'pull-right', :style => 'text-decoration: none;' %>
+    <% if user_signed_in? %>
+      <% if policy(:post).edit? %>
+        <%= link_to 'New Post', new_post_path, :class => 'pull-right', :style => 'text-decoration: none;' %>
+      <% end %>
+    <% end %>
 
     <table>
       <thead>
@@ -45,8 +49,12 @@
             <td><%= post.body.html_safe %></td>
             <td><%= post.description %></td>
             <td><%= link_to 'Show', post, :style => 'text-decoration: none;' %></td>
-            <td><%= link_to 'Edit', edit_post_path(post), :style => 'text-decoration: none;' %></td>
-            <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, :style => 'text-decoration: none;' %></td>
+            <% if user_signed_in? %>
+              <% if policy(:post).edit? %>
+                <td><%= link_to 'Edit', edit_post_path(post), :style => 'text-decoration: none;' %></td>
+                <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, :style => 'text-decoration: none;' %></td>
+              <% end %>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

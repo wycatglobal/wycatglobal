@@ -1,0 +1,47 @@
+.navbar-dark .navbar-nav .nav-link {
+  color: #fff !important;
+}
+
+.navbar {
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	flex-direction: row;
+	height: 6rem;
+	left: 0;
+	padding: 0 1rem 0 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+}
+
+.nav-bg-color {
+  background-color: #0f2a38 !important;
+}
+
+.scrolled-nav {
+  height: 57px !important;
+  
+}
+
+.counter {
+  width: 20px;
+  height: 20px;
+  background: black;
+  color: #fff;
+  position: fixed;
+  top: 120px;
+  right: 0;
+}
+
+.navprimary {
+  display: inline-block;
+  font-family: Roboto,sans-serif;
+  font-size: .90em;
+  letter-spacing: .05em;
+  padding: 1em 2em;
+  text-transform: uppercase;
+}
+
+.navbar-brand {
+  margin: 10px 0px 0px -30px;
+}

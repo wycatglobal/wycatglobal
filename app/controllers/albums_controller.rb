@@ -1,4 +1,6 @@
 class AlbumsController < ApplicationController
+  before_action :authenticate_user!, :except => [:index, :show]
+  before_action :check_authorize, only: [:new, :edit, :update, :destroy, :create]
 
   def index
     @albums = Album.all
@@ -53,4 +55,8 @@ class AlbumsController < ApplicationController
   def album_params
     params.require(:album).permit(:name, :description, :cover_image)
   end
+
+  def check_authorize
+    authorize OpenStruct.new(policy_class: AlbumPolicy, current_user: current_user)
+  end  
 end

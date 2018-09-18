@@ -1,55 +1,43 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark box-shadow">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top nav-bg-color box-shadow" id="global-nav" >
 	<%= favicon_link_tag asset_path('favicon.ico'), :rel => 'icon', :type => "image/x-icon" %>
 
 	<div class="container">
 		<div class="container d-flex justify-content-between">
-			<a class="navbar-name navbar-brand" href="/"><strong>WYCAT</strong></a>
+			<a class="navbar-brand" href="/"><h1>WYCAT</h1></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 	  		</button>
 
-	  		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-	    		<ul class="navbar-nav mr-auto">
+	  		<div class="collapse navbar-collapse navprimary" id="navbarSupportedContent">
+	    		<ul class="navbar-nav ml-auto">
 	      			<li class="nav-item #{yield(:gallery_active)}">
-	        			<a class="nav-link" href="#">Gallery <span class="sr-only">(current)</span></a>
+	      				<%= link_to 'GALLERY', albums_path , class:"nav-link #{yield(:gallery_active)}" %>
 	      			</li>
 	      			<li class="nav-item">
-	      				<%= link_to 'News', posts_path , class:"nav-link #{yield(:news_active)}" %>
+	      				<%= link_to 'NEWS', posts_path , class:"nav-link #{yield(:news_active)}" %>
 	      			</li>
 	      			<li class="nav-item">
-	      				<%= link_to 'Membership', membership_path, class:"nav-link #{yield(:membership_active)}" %>
+	      				<%= link_to 'MEMBERSHIP', membership_path, class:"nav-link #{yield(:membership_active)}" %>
 	      			</li>
-	      			<li class="nav-item dropdown">
-	        			<a class="nav-link dropdown-toggle <%= yield(:events_active) %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	          			Events
-	        			</a>
-	        			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	          				<%= link_to 'All Events', events_path ,class: 'dropdown-item' %>
-	          				<%= link_to 'Year Calendar', events_calendar_path ,class: 'dropdown-item' %>
-	          				<%= link_to 'Create Event', new_event_path ,class: 'dropdown-item' %>
-	          				<a class="dropdown-item" href="#">Another action</a>
-	          				<a class="dropdown-item" href="#">Something else here</a>
-	        			</div>
-	      			</li>	      
-	      			<li class="nav-item dropdown">
-	        			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	          			Dropdown
-	        			</a>
-	        			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	          				<a class="dropdown-item" href="#">Action</a>
-	          				<a class="dropdown-item" href="#">Another action</a>
-	          				<div class="dropdown-divider"></div>
-	          				<a class="dropdown-item" href="#">Something else here</a>
-	        			</div>
+	      			<li class="nav-item">
+	      				<%= link_to 'EVENTS', events_path, class:"nav-link #{yield(:events_active)}" %>
 	      			</li>
+	      			<% if user_signed_in? %>
+				      	<li class="nav-item dropdown">
+				        	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				          <%= current_user.email %>
+				        	</a>
+				       		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				       			<% if current_user.admin? %>
+				          			<%= link_to 'Users', users_path, class: "dropdown-item" %>
+						        	<div class="dropdown-divider"></div>				          			
+				          		<% end %>
+				          		<%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+				        	</div>
+				      	</li>
+			      	<% end %>	      				      				      
 	    		</ul>
-	    		<form class="form-inline my-2 my-lg-0">
-	      			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-	      			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-	    		</form>
 	  		</div>
 		</div>
   	</div>
 </nav>
-
-

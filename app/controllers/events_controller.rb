@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!, :except => [:index, :calendar, :show]
+  before_action :check_authorize, only: [:new, :create, :edit, :update, :destroy]
+
   def new
     @event = Event.new
   end
@@ -54,5 +57,9 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:event_title, :event_body, :event_date, :event_time, :event_location)
+  end
+
+  def check_authorize
+    authorize OpenStruct.new(policy_class: EventPolicy, current_user: current_user)
   end
 end

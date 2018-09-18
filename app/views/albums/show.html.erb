@@ -1,5 +1,10 @@
+
 <div class="bg-color">
 	<br/>
+	<br/>
+<br/>
+<br/>
+<br/>
 	<div class="container">
 
 		<div class="wrapper-bc">
@@ -52,18 +57,22 @@
 		</div>
 
 		<div class="container gallery-container">
-			<small class="pull-right"><%= link_to "Delete", album_path(@album.id), method: :delete,
-				data: { confirm: "Are you sure?" }, :style => 'text-decoration: none;' %></small>
-			<small class="pull-right">
-				<%= link_to edit_album_path, :style => 'text-decoration: none;' do %>
-					Edit &nbsp;
+			<% if user_signed_in? %>
+				<% if policy(:album).edit? %>
+					<small class="pull-right"><%= link_to "Delete", album_path(@album.id), method: :delete,
+						data: { confirm: "Are you sure?" }, :style => 'text-decoration: none;' %></small>
+					<small class="pull-right">
+						<%= link_to edit_album_path, :style => 'text-decoration: none;' do %>
+							Edit &nbsp;
+						<% end %>
+					</small>
+					<small class="pull-right">
+						<%= link_to upload_path, :style => 'text-decoration: none;' do %>
+							Add &nbsp;
+						<% end %>
+					</small>
 				<% end %>
-			</small>
-			<small class="pull-right">
-				<%= link_to upload_path, :style => 'text-decoration: none;' do %>
-					Add &nbsp;
-				<% end %>
-			</small>
+			<% end %>
 		    <h1><%= @album.name %></h1>
 		    <p class="page-description text-center"><%= @album.description %></p>
 		    <div class="tz-gallery">

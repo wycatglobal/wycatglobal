@@ -1,0 +1,31 @@
+<div style="background-color: #efefef;">
+  <br />
+  <br />
+  <br />
+  <br />
+
+  <div class="events-menu">
+  	<center>
+		<ul>
+			<li>
+				<%= link_to "All Events", events_path, class: "events-menu-link", style:"color: #02070a;text-decoration:none;" %>
+				<div class="pipe" style="display:inline-block;height: 200;">
+					|
+				</div>
+			</li>
+			<li>
+				<%= link_to "Year Calendar", events_calendar_path, class: "events-menu-link", style:"color: #02070a;text-decoration:none;" %>
+			</li>
+			<% if user_signed_in? %>
+				<% if policy(:event).edit? %>
+					<div class="pipe" style="display:inline-block;height: 200;">|</div>
+					<li>
+						<%= link_to "New Event", new_event_path, class: "events-menu-link", style:"color: #02070a;text-decoration:none;" %>				
+					</li>
+				<% end %>
+			<% end %>
+		</ul>
+	</center>
+  </div>
+</div>
+

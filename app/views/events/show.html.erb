@@ -1,6 +1,7 @@
 <% provide(:events_active, 'active') %>
 
 <div class="bg-color">
+	<%= render 'eventsnav' %>
 	<div class="container">
 		<br/>
 
@@ -34,13 +35,17 @@
 		<a href="http://www.linkedin.com/shareArticle?mini=true&url=&title=&summary=<%= request.original_url %>" title="Share on LinkedIn" target="_blank" class="btn btn-linkedin"><i class="fa fa-linkedin"></i> LinkedIn</a>
 		<a href="https://www.google.com/bookmarks/mark?op=edit&output=popup&bkmk=<%= request.original_url %>&title=<%= @event.event_title %>" title="Add to Google Bookmark" target="_blank" class="btn btn-bookmark"><i class="fa fa-bookmark"></i> Google Bookmark</a>
 
-		<small class="pull-right"><%= link_to "Delete", event_path(@event.id), method: :delete,
-		data: { confirm: "Are you sure?" }, :style => 'text-decoration: none;' %></small>
-		<small class="pull-right">
-			<%= link_to edit_event_path, :style => 'text-decoration: none;' do %>
-				Edit &nbsp;
+		<% if user_signed_in? %>
+			<% if policy(:event).edit? %>
+				<small class="pull-right"><%= link_to "Delete", event_path(@event.id), method: :delete,
+				data: { confirm: "Are you sure?" }, :style => 'text-decoration: none;' %></small>
+				<small class="pull-right">
+					<%= link_to edit_event_path, :style => 'text-decoration: none;' do %>
+						Edit &nbsp;
+					<% end %>
+				</small>
 			<% end %>
-		</small>
+		<% end %>
 
 		<div class="container">
 			<div class="row">

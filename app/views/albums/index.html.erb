@@ -2,16 +2,25 @@
   <br />
   <br />
   <br />
+  <br />
+  <br />
+  <br />
 </div>
 
 <div class="container" style="background-color: #f8f9fa;">
-  <% if @albums.exists? %>
-    <%= link_to "Upload Photo", upload_path, :class => 'pull-right', :style => 'text-decoration: none;' %>
-    <%= link_to new_album_path, :class => 'pull-right', :style => 'text-decoration: none;' do %>
-      Add Album&nbsp;&nbsp;&nbsp;
+  <% if user_signed_in? %>
+    <% if @albums.exists? %>
+      <% if policy(:album).edit? %>
+        <%= link_to "Upload Photo", upload_path, :class => 'pull-right', :style => 'text-decoration: none;' %>
+        <%= link_to new_album_path, :class => 'pull-right', :style => 'text-decoration: none;' do %>
+        Add Album&nbsp;&nbsp;&nbsp;
+        <% end %>
+      <% else %>
+        <% if policy(:album).edit? %>
+          <%= link_to "Add Album", new_album_path, :class => 'pull-right' %>
+        <% end %>
+      <% end %>
     <% end %>
-  <% else %>
-    <%= link_to "Add Album", new_album_path, :class => 'pull-right' %>
   <% end %>
 </div>
 
@@ -32,7 +41,11 @@
               				<div class="d-flex justify-content-between align-items-center">
                 				<div class="btn-group">
                           <%= link_to "View", album_path(album.id), class:'btn btn-sm btn-outline-secondary' %>
-                          <%= link_to "Edit", edit_album_path(album.id), class:'btn btn-sm btn-outline-secondary' %>
+                          <% if user_signed_in? %>
+                            <% if policy(:album).edit? %>
+                              <%= link_to "Edit", edit_album_path(album.id), class:'btn btn-sm btn-outline-secondary' %>
+                            <% end %>
+                          <% end %>
                 				</div>
                 				<small class="text-muted"><%= album.created_at.strftime("%-b %-d %Y") %></small>
               				</div>

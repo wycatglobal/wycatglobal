@@ -47,3 +47,24 @@
   font-size: 11px;
   padding-left: 20px;
 }
+
+.events-menu ul {
+  padding:0; 
+  list-style:none; 
+}
+
+.events-menu ul li {
+  display:inline-block; 
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.events-menu .pipe {
+  color: #fff;
+  font-size: 25px;
+}
+
+.events-menu {
+  color: #02070a;
+  background-color: #3186b2;
+}

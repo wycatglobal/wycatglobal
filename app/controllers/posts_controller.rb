@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :except => [:index, :show]
+  before_action :check_authorize, only: [:new, :edit, :update, :destroy, :create]
 
   # GET /posts
   # GET /posts.json
@@ -74,5 +76,9 @@ class PostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit(:title, :body, :description, :cover_image, :tag_list)
+    end
+
+    def check_authorize
+      authorize OpenStruct.new(policy_class: PostPolicy, current_user: current_user)
     end
 end
