@@ -27,13 +27,15 @@
 				</div>
 			</section>
   		</div>		
-		<br/>
+		
 
 		<a href="http://twitter.com/home?status=<%= request.original_url %>" title="Share on Twitter" target="_blank" class="btn btn-twitter"><i class="fa fa-twitter"></i> Twitter</a>
 		<a href="https://www.facebook.com/sharer/sharer.php?u=<%= request.original_url %>" title="Share on Facebook" target="_blank" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
 		<a href="https://plus.google.com/share?url=<%= request.original_url %>" title="Share on Google+" target="_blank" class="btn btn-googleplus"><i class="fa fa-google-plus"></i> Google+</a>
 		<a href="http://www.linkedin.com/shareArticle?mini=true&url=&title=&summary=<%= request.original_url %>" title="Share on LinkedIn" target="_blank" class="btn btn-linkedin"><i class="fa fa-linkedin"></i> LinkedIn</a>
 		<a href="https://www.google.com/bookmarks/mark?op=edit&output=popup&bkmk=<%= request.original_url %>&title=<%= @event.event_title %>" title="Add to Google Bookmark" target="_blank" class="btn btn-bookmark"><i class="fa fa-bookmark"></i> Google Bookmark</a>
+		<br/>
+		<br/>
 
 		<% if user_signed_in? %>
 			<% if policy(:event).edit? %>
