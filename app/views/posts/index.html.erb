@@ -36,28 +36,7 @@
     <% end %>
 
     <br />
-    <table>
 
-
-      <tbody>
-        <% @posts.each do |post| %>
-          <tr>
-            <td><%= post.title %></td>
-            <td><%= post.body.html_safe %></td>
-            <td><%= post.description %></td>
-            <td><%= link_to 'Show', post, :style => 'text-decoration: none;' %></td>
-            <div class="pull-right">
-            <% if user_signed_in? %>
-              <% if policy(:post).edit? %>
-                <td><%= link_to 'Edit', edit_post_path(post), :style => 'text-decoration: none;' %></td>
-                <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, :style => 'text-decoration: none;' %></td>
-              <% end %>
-            <% end %>
-          </div>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
 
           <div class="row mb-2">
              <% @posts.each do |post| %>
@@ -66,10 +45,10 @@
             <div class="card-body d-flex flex-column align-items-start">
               <strong class="d-inline-block mb-2 text-primary">World</strong>
               <h3 class="mb-0">
-                <a class="text-dark" href="#"><%= post.title %></a>
+                <a class="text-dark" href="#"><%= link_to post.title, post %></a>
               </h3>
               <div class="mb-1 text-muted">Nov 12</div>
-              <p class="card-text mb-auto"><%= post.body.html_safe %></p>
+              <p class="card-text mb-auto"><%= post.body.html_safe, post %></p>
               <p class="card-text mb-auto"><%= post.description %></p>
               <div class="pull-right">
                           <% if user_signed_in? %>
