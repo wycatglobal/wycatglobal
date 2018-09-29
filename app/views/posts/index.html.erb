@@ -37,7 +37,6 @@
 
     <br />
 
-
           <div class="row mb-2">
              <% @posts.each do |post| %>
         <div class="col-md-6">
@@ -48,8 +47,9 @@
                 <a class="text-dark" href="#"><%= link_to post.title, post %></a>
               </h3>
               <div class="mb-1 text-muted">Nov 12</div>
-              <p class="card-text mb-auto"><%= post.body.html_safe, post %></p>
+              <p class="card-text mb-auto"><%= link_to post.body.html_safe, post %></p>
               <p class="card-text mb-auto"><%= post.description %></p>
+              <p><%= link_to 'Show', post, :style => 'text-decoration: none;' %></p>
               <div class="pull-right">
                           <% if user_signed_in? %>
               <% if policy(:post).edit? %>
