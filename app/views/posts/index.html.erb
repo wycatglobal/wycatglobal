@@ -46,12 +46,14 @@
             <td><%= post.body.html_safe %></td>
             <td><%= post.description %></td>
             <td><%= link_to 'Show', post, :style => 'text-decoration: none;' %></td>
+            <div class="pull-right">
             <% if user_signed_in? %>
               <% if policy(:post).edit? %>
                 <td><%= link_to 'Edit', edit_post_path(post), :style => 'text-decoration: none;' %></td>
                 <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, :style => 'text-decoration: none;' %></td>
               <% end %>
             <% end %>
+          </div>
           </tr>
         <% end %>
       </tbody>
@@ -69,12 +71,14 @@
               <div class="mb-1 text-muted">Nov 12</div>
               <p class="card-text mb-auto"><%= post.body.html_safe %></p>
               <p class="card-text mb-auto"><%= post.description %></p>
+              <div class="pull-right">
                           <% if user_signed_in? %>
               <% if policy(:post).edit? %>
                 <td><%= link_to 'Edit', edit_post_path(post), :style => 'text-decoration: none;' %></td>
                 <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, :style => 'text-decoration: none;' %></td>
               <% end %>
             <% end %>
+          </div>
             </div>
             <img class="card-img-right flex-auto d-none d-lg-block" data-src="newst.jpg" alt="">
           </div>
